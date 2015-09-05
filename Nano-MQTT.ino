@@ -6,10 +6,10 @@
 
 LiquidCrystal_I2C lcd(0x27,16,2);
 
-byte mac[]      = {  0xDE, 0xED, 0xBA, 0xFE, 0xFE, 0xED }; // set the mac address for the arduino nano mcu 
-//byte server[] = { xxx, xxx, xxx, xxx };                  // set MQTT broker server IP address
-char server[]   = "xxx.xxxxxxx.xxx";                       // set MQTT broker server domain address 
-byte ip[]       = { xxx, xxx, xxx, xxx };                  // set the IP address for the arduino nano mcu 
+byte mac[]      = {  0xDE, 0xED, 0xBA, 0xFE, 0xFE, 0xED }; // Set the mac address for the arduino nano mcu 
+//byte server[] = { xxx, xxx, xxx, xxx };                  // Set MQTT broker server IP address
+char server[]   = "xxx.xxxxxxx.xxx";                       // Set MQTT broker server domain address 
+byte ip[]       = { xxx, xxx, xxx, xxx };                  // Set the IP address for the arduino nano mcu 
 
 int LED = 6;
 String msgString;
@@ -43,7 +43,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
     digitalWrite(LED, HIGH);   		      // If message payload received is 1, LED is turned on
     lcd.clear();			                  // Clear previously printed values in the LCD
     lcd.print("D6 : ON");		            // Print The Message on LCD
-    lcd.setCursor(0,1);                 // set top cursor position on 16x2 LCD module
+    lcd.setCursor(0,1);                 // Set top cursor position on 16x2 LCD module
     
   } else {
 
@@ -51,7 +51,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
     lcd.print("Device Status");         // Print Device Status message on LCD
     lcd.setCursor(0,1);                 // set top cursor position on 16x2 LCD module
     lcd.print(msgString);		            // Print The message payload on LCD
-    lcd.setCursor(1,1);                 // set top cursor position on 16x2 LCD module
+    lcd.setCursor(1,1);                 // Set top cursor position on 16x2 LCD module
 
   }
 
