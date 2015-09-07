@@ -40,17 +40,17 @@ void callback(char* topic, byte* payload, unsigned int length) {
   else if (msgString == "1")
   {
     
-    digitalWrite(LED, HIGH);   		      // If message payload received is 1, LED is turned on
-    lcd.clear();			                  // Clear previously printed values in the LCD
-    lcd.print("D6 : ON");		            // Print The Message on LCD
+    digitalWrite(LED, HIGH);            // If message payload received is 1, LED is turned on
+    lcd.clear();                        // Clear previously printed values in the LCD
+    lcd.print("D6 : ON");               // Print The Message on LCD
     lcd.setCursor(0,1);                 // Set top cursor position on 16x2 LCD module
     
   } else {
 
-    lcd.clear();			                  // Clear previously printed values in the LCD
+    lcd.clear();                        // Clear previously printed values in the LCD
     lcd.print("Device Status");         // Print Device Status message on LCD
     lcd.setCursor(0,1);                 // set top cursor position on 16x2 LCD module
-    lcd.print(msgString);		            // Print The message payload on LCD
+    lcd.print(msgString);               // Print The message payload on LCD
     lcd.setCursor(1,1);                 // Set top cursor position on 16x2 LCD module
 
   }
@@ -65,9 +65,9 @@ void setup()
 {
   
   Serial.begin(9600);
-  pinMode(LED, OUTPUT);                     // set LED connected pin to OUTPUT mode
+  pinMode(LED, OUTPUT);                 // set LED connected pin to OUTPUT mode
   
-  lcd.init();                     	        // Initialize the LCD
+  lcd.init();                           // Initialize the LCD
   lcd.backlight();
 
 
