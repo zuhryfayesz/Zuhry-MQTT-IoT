@@ -16,7 +16,7 @@ String msgString;
 
 void callback(char* topic, byte* payload, unsigned int length) {
   
-  // handle message arrived
+  // Handle message arrived upon a publish
   char message_buff[100];
   int i;
   
@@ -60,7 +60,6 @@ void callback(char* topic, byte* payload, unsigned int length) {
 EthernetClient ethClient;
 PubSubClient client(server, 1883, callback, ethClient);
 
-
 void setup()
 {
   
@@ -70,12 +69,13 @@ void setup()
   lcd.init();                                               // Initialize the LCD
   lcd.backlight();
 
-
   Ethernet.begin(mac, ip);
   
-  if (client.connect("arduinoClient")) {
+  if (client.connect("arduinoClient")) {                    // Check the MQTT broker connectivity
+    
      client.publish("topic","connected");                   // Publish ethernet connected status to MQTT topic
      client.subscribe("topic");                             // Subscribe to a MQTT topic
+ 
   }
 
 }
