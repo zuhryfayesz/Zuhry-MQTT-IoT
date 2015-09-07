@@ -26,32 +26,32 @@ void callback(char* topic, byte* payload, unsigned int length) {
   
   message_buff[i] = '\0';
   msgString = String(message_buff);
-  Serial.println("message arrived: " + msgString);  // Serial output of received callback payload
+  Serial.println("message arrived: " + msgString);          // Serial output of received callback payload
 
   if(msgString == "0")
   {
     			
-    digitalWrite(LED, LOW);             // If message payload received is 0, LED is turned off
-    lcd.clear();                        // Clear previously printed values in the LCD
-    lcd.print("D6 : OFF");              // Print The Message on LCD
+    digitalWrite(LED, LOW);                                 // If message payload received is 0, LED is turned off
+    lcd.clear();                                            // Clear previously printed values in the LCD
+    lcd.print("D6 : OFF");                                  // Print The Message on LCD
     lcd.setCursor(0,1);
     
   }
   else if (msgString == "1")
   {
     
-    digitalWrite(LED, HIGH);            // If message payload received is 1, LED is turned on
-    lcd.clear();                        // Clear previously printed values in the LCD
-    lcd.print("D6 : ON");               // Print The Message on LCD
-    lcd.setCursor(0,1);                 // Set top cursor position on 16x2 LCD module
+    digitalWrite(LED, HIGH);                                // If message payload received is 1, LED is turned on
+    lcd.clear();                                            // Clear previously printed values in the LCD
+    lcd.print("D6 : ON");                                   // Print The Message on LCD
+    lcd.setCursor(0,1);                                     // Set top cursor position on 16x2 LCD module
     
   } else {
 
-    lcd.clear();                        // Clear previously printed values in the LCD
-    lcd.print("Device Status");         // Print Device Status message on LCD
-    lcd.setCursor(0,1);                 // set top cursor position on 16x2 LCD module
-    lcd.print(msgString);               // Print The message payload on LCD
-    lcd.setCursor(1,1);                 // Set top cursor position on 16x2 LCD module
+    lcd.clear();                                            // Clear previously printed values in the LCD
+    lcd.print("Device Status");                             // Print Device Status message on LCD
+    lcd.setCursor(0,1);                                     // Set top cursor position on 16x2 LCD module
+    lcd.print(msgString);                                   // Print The message payload on LCD
+    lcd.setCursor(1,1);                                     // Set top cursor position on 16x2 LCD module
 
   }
 
@@ -65,16 +65,17 @@ void setup()
 {
   
   Serial.begin(9600);
-  pinMode(LED, OUTPUT);                 // set LED connected pin to OUTPUT mode
+  pinMode(LED, OUTPUT);                                     // Set LED connected pin to OUTPUT mode
   
-  lcd.init();                           // Initialize the LCD
+  lcd.init();                                               // Initialize the LCD
   lcd.backlight();
 
 
   Ethernet.begin(mac, ip);
+  
   if (client.connect("arduinoClient")) {
-     client.publish("topic","connected");   // publish ethernet connected status to MQTT topic
-     client.subscribe("topic");             // Subscribe to a MQTT topic
+     client.publish("topic","connected");                   // Publish ethernet connected status to MQTT topic
+     client.subscribe("topic");                             // Subscribe to a MQTT topic
   }
 
 }
@@ -83,3 +84,5 @@ void loop()
 {
   client.loop();
 }
+
+
