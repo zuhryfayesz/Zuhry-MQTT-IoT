@@ -11,8 +11,8 @@ byte mac[]      = {  0xDE, 0xED, 0xBA, 0xFE, 0xFE, 0xED }; // Set the mac addres
 char server[]   = "xxx.xxxxxxx.xxx";                       // Set MQTT broker server domain address 
 byte ip[]       = { xxx, xxx, xxx, xxx };                  // Set the IP address for the arduino nano mcu 
 
-int LED = 6;
-String msgString;
+int LED = 6;                                               // Initialize digital pin 6 to LED variable 
+String msgString;                                          // Initialize msgString variable
 
 void callback(char* topic, byte* payload, unsigned int length) {
   
@@ -66,7 +66,7 @@ void setup()
   Serial.begin(9600);
   pinMode(LED, OUTPUT);                                     // Set LED connected pin to OUTPUT mode
   
-  lcd.init();                                               // Initialize the LCD
+  lcd.init();                                               // Initialize the 16X2 LCD
   lcd.backlight();
 
   Ethernet.begin(mac, ip);
