@@ -16,7 +16,7 @@ String msgString;                                          // Initialize msgStri
 
 void callback(char* topic, byte* payload, unsigned int length) {
   
-  // Handle message arrived upon a publish
+  // Handle message arrived upon a publish from a MQTT client
   char message_buff[100];
   int i;
   
@@ -58,12 +58,12 @@ void callback(char* topic, byte* payload, unsigned int length) {
 }
 
 EthernetClient ethClient;
-PubSubClient client(server, 1883, callback, ethClient);
+PubSubClient client(server, 1883, callback, ethClient);     // Initialize a MQTT client instance
 
 void setup()
 {
   
-  Serial.begin(9600);
+  Serial.begin(9600);                                       // Set the Serial Buad rate to 9600 
   pinMode(LED, OUTPUT);                                     // Set LED connected pin to OUTPUT mode
   
   lcd.init();                                               // Initialize the 16X2 LCD
