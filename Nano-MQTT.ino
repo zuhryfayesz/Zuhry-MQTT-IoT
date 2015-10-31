@@ -2,7 +2,7 @@
 #include <UIPEthernet.h>                                  // UIP Ethernet Library to support ENC28J60 ethernet module. 
 #include <PubSubClient.h>                                 // MQTT publisher/subscriber client library
 #include <Wire.h>
-#include <LiquidCrystal_I2C.h>                            // i2C converter compatible library
+#include <LiquidCrystal_I2C.h>                            // i2C bus converter compatible library for LCD
 
 LiquidCrystal_I2C lcd(0x27,16,2);
 
