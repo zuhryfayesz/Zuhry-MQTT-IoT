@@ -34,7 +34,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
     digitalWrite(LED, LOW);                                 // If message payload received is 0, LED is turned off
     lcd.clear();                                            // Clear previously printed values in the LCD
     lcd.print("D6 : OFF");                                  // Print The Message on LCD
-    lcd.setCursor(0,1);
+    lcd.setCursor(0,1);                                     // Set top cursor position on 16x2 LCD module
     
   }
   else if (msgString == "1")
